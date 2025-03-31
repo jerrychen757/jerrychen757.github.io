@@ -254,6 +254,10 @@ button:hover {
 	.align-right {
 		text-align: right;
 	}
+#header .inner h1 {
+    text-align: center;
+}
+
 
 /* Container */
 
