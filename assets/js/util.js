@@ -94,9 +94,16 @@
 
 			}, userConfig);
 
-			// Expand "target" if it's not a jQuery object already.
-				if (typeof config.target != 'jQuery')
-					config.target = $(config.target);
+			// Validate and sanitize "target".
+				if (typeof config.target === 'string') {
+					try {
+						config.target = $(config.target);
+					} catch (e) {
+						config.target = $this; // Fallback to the current element if invalid
+					}
+				} else if (!(config.target instanceof jQuery)) {
+					config.target = $this; // Fallback to the current element if not a valid jQuery object
+				}
 
 		// Panel.
 
