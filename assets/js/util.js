@@ -71,8 +71,10 @@
 
         // 確保 config.target 是 jQuery 物件
         if (typeof config.target === 'string') {
+            // Sanitize the target string
+            var sanitizedTarget = config.target.replace(/[<>]/g, '');
             try {
-                config.target = $(config.target);
+                config.target = $(sanitizedTarget);
                 if (config.target.length === 0) throw new Error('Invalid selector');
             } catch (e) {
                 config.target = $this;
